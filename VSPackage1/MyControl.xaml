@@ -11,7 +11,7 @@
     <Grid>
         <DockPanel>
             <StackPanel Orientation="Vertical" DockPanel.Dock="Top" >
-                <ToolBar Height="40" Background="#FF423D3D">
+                <ToolBar Height="40" Background="#FF363535">
                 
                     <Label Content="Level:" FontSize="15" VerticalAlignment="Center" Foreground="#FFFFFBFB"/>
                     <ComboBox Height="30" Margin="0,0,10,0" VerticalAlignment="Center" Width="120" Background="#FFFDFDFD">
@@ -23,30 +23,51 @@
                 
                     <TextBox TabIndex="1" Height="30" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" FontSize="15" />
                     <Button Foreground="White" Background="Gray" Height="30" Width="50" Content="search" BorderBrush="Gray" Margin="0,0,10,0" ></Button>
-                    <Button Height="30" Width="50" Click="openFile_Click" Foreground="White" Background="#FFDEB74D" BorderBrush="#FFB9A41C" Content="open" ></Button>
+                    <Button Height="30" Width="50" Click="openFile_Click" Foreground="White" Background="#FFDEB74D" BorderBrush="#FFB9A41C" Content="open" Margin="0,0,10,0" ></Button>
+                    <Button Height="30" Width="50" Click="clear_Click" Foreground="White" Background="#FF2B2828" BorderBrush="#FF2B2828" Content="clear" ></Button>
                 </ToolBar>
             </StackPanel>
         
-            <DataGrid x:Name="logView" AutoGenerateColumns="False" 
+            <DataGrid x:Name="logView" AutoGenerateColumns="False" CanUserAddRows="false"
                           VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto"
-                          Background="#FF423D3D" Foreground="Black" DockPanel.Dock="Bottom"
+                          Background="#FF292929" Foreground="Black" DockPanel.Dock="Bottom"
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                          MouseDoubleClick="logView_MouseDoubleClick">
+                          MouseDoubleClick="logView_MouseDoubleClick" >
 
-                <DataGrid.Resources>
+                
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="Height" Value="30"/>
+                        <Setter Property="Background" Value="DarkGray"/>
+                        <Setter Property="Foreground" Value="black" />
+                        <Setter Property="BorderBrush" Value="Gray"/>
+                        <Setter Property="BorderThickness" Value="0,0,1,0"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="#FF292929"/>
+                        <Setter Property="Foreground" Value="white"/>
+                        <Setter Property="FontSize" Value="15" />
+                    </Style>
+                </DataGrid.RowStyle>
+                
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="80" Header="product" Binding="{Binding productName}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="80" Header="file" Binding="{Binding fileName}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="80" Header="time" Binding="{Binding time}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="80" Header="level" Binding="{Binding level}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="80" Header="line" Binding="{Binding line}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="200" Header="text" Binding="{Binding text}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+
+                <!--<DataGrid.Resources>
                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="Gray" />
                     </Style>
-                </DataGrid.Resources>
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="product" Binding="{Binding productName}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="file" Binding="{Binding fileName}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="time" Binding="{Binding time}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="level" Binding="{Binding level}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="line" Binding="{Binding line}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="text" Binding="{Binding text}" IsReadOnly="True"/>
-                </DataGrid.Columns>
+                </DataGrid.Resources>-->
             </DataGrid>
         </DockPanel>
     </Grid>
