@@ -21,8 +21,8 @@
                         <Label>all</Label>
                     </ComboBox>
                 
-                    <TextBox TabIndex="1" Height="30" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" FontSize="15" />
-                    <Button Foreground="White" Background="Gray" Height="30" Width="50" Content="search" BorderBrush="Gray" Margin="0,0,10,0" ></Button>
+                    <TextBox x:Name="searchText" TabIndex="1" Height="30" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" FontSize="15" />
+                    <Button Foreground="White" Background="Gray" Click="search_Click" Height="30" Width="50" Content="search" BorderBrush="Gray" Margin="0,0,10,0" ></Button>
                     <Button Height="30" Width="50" Click="openFile_Click" Foreground="White" Background="#FFDEB74D" BorderBrush="#FFB9A41C" Content="open" Margin="0,0,10,0" ></Button>
                     <Button Height="30" Width="50" Click="clear_Click" Foreground="White" Background="#FF2B2828" BorderBrush="#FF2B2828" Content="clear" ></Button>
                 </ToolBar>

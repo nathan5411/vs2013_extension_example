@@ -57,6 +57,17 @@ namespace Company.VSPackage1
             displayData = data;
         }
 
+        public bool Search(string text)
+        {
+            displayData = data.Where(d => d.text.Contains(text)).ToList();
+            return (displayData != null && displayData.Count > 0);
+        }
+
+        public void Reset()
+        {
+            displayData = data;
+        }
+
         public void Filter()
         {
             //TODO filter

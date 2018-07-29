@@ -58,6 +58,25 @@ namespace Company.VSPackage1
             logView.ItemsSource = manager.getDisplayData();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions")]
+        private void search_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(searchText.Text))
+            {
+                manager.Reset();
+            }
+            else
+            {
+                bool success = manager.Search(searchText.Text);
+                if (!success)
+                {
+                    MessageBox.Show("text not found.", "message");
+                }
+            }
+
+            logView.ItemsSource = manager.getDisplayData();
+        }
+
         /// <summary>
         /// find project item by name
         /// </summary>
@@ -123,8 +142,13 @@ namespace Company.VSPackage1
             DataGrid datagrid = sender as DataGrid;
             int index = datagrid.SelectedIndex;
 
-            //TODO get moduleName and lineNum
+            if (index == -1)
+            {
+                return;
+            }
 
+            //TODO get moduleName and lineNum
+            
             
         }
 
