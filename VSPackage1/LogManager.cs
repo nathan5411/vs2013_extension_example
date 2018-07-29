@@ -18,16 +18,20 @@ namespace Company.VSPackage1
 
         public void Parse(string path)
         {
-            data = new List<Models.LogModel>() {
-                new Models.LogModel() {
-                    productName = "p1",
-                    fileName = "f1",
-                    time = "t1",
-                    level = "l1",
-                    line = "234",
-                    text = "error message"
-                }
-            };
+            data = new List<Models.LogModel>() ;
+            
+            for ( int i = 0 ; i < 10000 ; i++ )
+            {
+                data.Add(new Models.LogModel()
+                {
+                    productName = "p" + i.ToString(),
+                    fileName = "f" + i.ToString(),
+                    time = "t" + i.ToString(),
+                    level = "l" + i.ToString(),
+                    line = i.ToString(),
+                    text = "error message - " + i.ToString()
+                });
+            }
 
             displayData = data;
         }
@@ -45,6 +49,12 @@ namespace Company.VSPackage1
             }
 
             return this.displayData[index];
+        }
+
+        public void Clear()
+        {
+            data = new List<Models.LogModel>();
+            displayData = data;
         }
 
         public void Filter()
