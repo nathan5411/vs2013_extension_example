@@ -52,6 +52,12 @@ namespace Company.VSPackage1
             }
         }
 
+        private void clear_Click(object sender, RoutedEventArgs e)
+        {
+            manager.Clear();
+            logView.ItemsSource = manager.getDisplayData();
+        }
+
         /// <summary>
         /// find project item by name
         /// </summary>
